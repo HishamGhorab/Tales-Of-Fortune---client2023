@@ -639,11 +639,11 @@ PrefabInstance:
     - target: {fileID: -1504981713932161579, guid: 258f889d40299e44b8b21a487fe8ac01, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d1cfa4460784ae44a9e468087b75c22, type: 2}
+      objectReference: {fileID: 2100000, guid: 4ced759c9eb05d44bb7357b4284da27b, type: 2}
     - target: {fileID: -1504981713932161579, guid: 258f889d40299e44b8b21a487fe8ac01, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 2e162aee088f289458a45f73dbcf96cc, type: 2}
+      objectReference: {fileID: 2100000, guid: 3b2d8deeebff87e4e923323dae581b2d, type: 2}
     - target: {fileID: -927199367670048503, guid: 258f889d40299e44b8b21a487fe8ac01, type: 3}
       propertyPath: m_Name
       value: DioramaWater
