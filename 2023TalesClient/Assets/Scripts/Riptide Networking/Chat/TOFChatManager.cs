@@ -79,6 +79,8 @@ public class TOFChatManager : MonoBehaviour
 
     public void SendChatTextToServer(string text)
     {
+        Debug.Log(text);
+        
         Message _message = Message.Create(MessageSendMode.reliable, ClientToServerId.sendChatText);
         _message.AddString(text);
         TOFNetworkManager.Singleton.Client.Send(_message);

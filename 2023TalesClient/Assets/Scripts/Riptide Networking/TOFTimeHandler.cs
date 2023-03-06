@@ -11,10 +11,10 @@ public class TOFTimeHandler : MonoBehaviour
     public TextMeshProUGUI gametimetext;
     public TextMeshProUGUI roundtimetext;
 
-    public int SegmentTime;
-    public int MoveTime;
-    public int CannonTime;
-    public int SinkTime;
+    [NonSerialized] public int SegmentTime;
+    [NonSerialized] public int MoveTime;
+    [NonSerialized] public int CannonTime;
+    [NonSerialized] public int SinkTime;
     
     private static TOFTimeHandler _singleton;
     public static TOFTimeHandler Singleton

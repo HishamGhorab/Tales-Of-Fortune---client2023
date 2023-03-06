@@ -40,7 +40,6 @@ public class TOFMatchmaking : MonoBehaviour //TOFMatchmakingUI
     {
         Singleton = this;
         matchmakingUi = GameObject.Find("matchmaking");
-
     }
 
     private void Start()
@@ -77,7 +76,7 @@ public class TOFMatchmaking : MonoBehaviour //TOFMatchmakingUI
     
     public void StartSession()
     {
-        //när man trycker start så skickar man helt enkelt ett meddelandet till servern och ber den att byta scen till alla clienter!
+        //när man trycker start så skickar man helt enkelt ett meddelandet till servern och ber den att byta scen för alla clienter!
         Message message = Message.Create(MessageSendMode.reliable, ClientToServerId.onSessionStart);
         TOFNetworkManager.Singleton.Client.Send(message);
     }
