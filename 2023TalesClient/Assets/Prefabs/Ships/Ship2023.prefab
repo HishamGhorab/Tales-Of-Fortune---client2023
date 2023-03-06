@@ -58,8 +58,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158163626413126231}
-  m_LocalRotation: {x: -0, y: 0.007783288, z: -0, w: 0.9999697}
-  m_LocalPosition: {x: 0, y: 5.5, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 1, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -67,7 +67,7 @@ Transform:
   - {fileID: 1158163626413486475}
   m_Father: {fileID: 1022503631795606673}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0.892, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1158163626412154539
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -126,10 +126,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158163626413126231}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 60178b8b289271c44bc9dab35c7a851a, type: 3}
 --- !u!114 &3825419540687756515
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ea55c29bd458c4e894d7ce316fdf64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cannonPrefab: {fileID: 127120, guid: feef7742679be4e4f9751dea1518867d, type: 3}
+  cannonPrefab: {fileID: 7859739396094831761, guid: c55c5fa3d1a8a6e48a8c4f2e49f1eccb, type: 3}
 --- !u!95 &3649813183695950761
 Animator:
   serializedVersion: 4

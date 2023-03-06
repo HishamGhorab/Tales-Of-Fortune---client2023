@@ -52,6 +52,7 @@ public class TOFGameView : MonoBehaviour
         {
             Vector2Int startPos = player.position;
             Vector3 v = PieceToWorldPos(new Vector3(startPos.x, 0, startPos.y));
+            v = new Vector3(v.x, v.y + 5.5f, v.z);
             TOFPlayer.playerShipObjects[player.Id].transform.position = v;
             
             SpawnShip(TOFPlayer.playerShipObjects[player.Id].transform);
@@ -204,7 +205,7 @@ public class TOFGameView : MonoBehaviour
 
     public static Vector3 PieceToWorldPos(Vector3 position)
     {
-        return position * 10;
+        return new Vector3(position.x * 10, position.y, position.z * 10);
     }
 
     public class MoveValues

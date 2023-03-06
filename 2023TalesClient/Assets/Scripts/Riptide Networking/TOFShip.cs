@@ -33,7 +33,7 @@ public class TOFShip : MonoBehaviour
         if(cannonLeft || cannonRight)
         {
             //cannonShotSound.Play();
-            InstantiateCannon(cannonRight, cannonLeft, 200);
+            InstantiateCannon(cannonRight, cannonLeft, 1500);
         }
 
         if (cannonRight)
@@ -59,14 +59,18 @@ public class TOFShip : MonoBehaviour
         {
             if(_cannonRight)
             {
-                GameObject thisProjectile = Instantiate(cannonPrefab, transform.position, Quaternion.identity);
+                GameObject thisProjectile = Instantiate(cannonPrefab, 
+                    new Vector3(transform.position.x, 7, transform.position.z), Quaternion.identity);
+                
                 thisProjectile.GetComponent<Rigidbody>().AddForce(transform.right * speed);
                 Destroy(thisProjectile, 1);
             }
     
             if(_cannonLeft)
             {
-                GameObject thisProjectile = Instantiate(cannonPrefab, transform.position, Quaternion.identity);
+                GameObject thisProjectile = Instantiate(cannonPrefab, 
+                    new Vector3(transform.position.x, 7, transform.position.z), Quaternion.identity);
+                
                 thisProjectile.GetComponent<Rigidbody>().AddForce(-transform.right * speed);
                 Destroy(thisProjectile, 1);
             }

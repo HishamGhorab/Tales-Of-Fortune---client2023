@@ -7,7 +7,7 @@ using UnityEngine;
 
 public enum ServerToClientId : ushort
 {
-    clientMatched = 1, clientLeft, matchmakingClientsChanged, isLobbyLeader, onSessionStarted, updateSegmentTimes, 
+    clientJoinedLobby = 1, clientLeftLobby, matchmakingClientsChanged, isLobbyLeader, onSessionStarted, updateSegmentTimes, 
     updateHealthValues, AddPlayerToList,
 
     //Session flow

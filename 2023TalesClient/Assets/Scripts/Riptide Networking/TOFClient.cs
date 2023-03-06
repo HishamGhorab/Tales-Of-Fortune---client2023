@@ -30,20 +30,21 @@ public class TOFClient
             client.islocal = false;
         }
 
-        TOFClient.clients.Add(id, client);
+        clients.Add(id, client);
     }
 
     public static void RemoveMatchedClient(ushort id)
     {
-        TOFPlayer.players.Remove(id);
+        //TOFPlayer.players.Remove(id);
+        clients.Remove(id);
 
         if(TOFNetworkManager.Singleton.Client.Id == id) 
             TOFNetworkManager.Singleton.Disconnect();
     }
     
     #region MessageHandlers
-    [MessageHandler((ushort) ServerToClientId.clientMatched)]
-    private static void MatchClient(Message message)
+    [MessageHandler((ushort) ServerToClientId.clientJoinedLobby)]
+    private static void AddClientToLobby(Message message)
     {
         ushort id = message.GetUShort();
         string username = message.GetString();
@@ -51,8 +52,8 @@ public class TOFClient
         AddMatchedClient(id, username);
     }
     
-    [MessageHandler((ushort) ServerToClientId.clientLeft)]
-    private static void UnmatchClient(Message message)
+    [MessageHandler((ushort) ServerToClientId.clientLeftLobby)]
+    private static void RemoveClientFromLobby(Message message)
     {
         ushort id = message.GetUShort();
         string username = message.GetString();
