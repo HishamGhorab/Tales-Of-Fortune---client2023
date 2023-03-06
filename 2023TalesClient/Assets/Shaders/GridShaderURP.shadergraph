@@ -207,8 +207,8 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": -0.00001811981201171875,
-            "y": -2.9999992847442629
+            "x": 0.00003743171691894531,
+            "y": -37.999961853027347
         },
         "m_Blocks": [
             {
@@ -285,7 +285,7 @@
     "m_AlphaMode": 0,
     "m_RenderFace": 2,
     "m_AlphaClip": false,
-    "m_CastShadows": true,
+    "m_CastShadows": false,
     "m_ReceiveShadows": true,
     "m_CustomEditorGUI": "",
     "m_SupportVFX": false
