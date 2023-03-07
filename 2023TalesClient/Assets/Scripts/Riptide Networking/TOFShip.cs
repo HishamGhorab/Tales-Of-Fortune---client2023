@@ -15,7 +15,7 @@ public class TOFShip : MonoBehaviour
     //create different types of cannons in the futures
     [SerializeField] private GameObject cannonPrefab;
 
-    //[SerializeField] private AudioSource cannonShotSound;
+    [SerializeField] private AudioSource cannonShotSound;
 
     private void Start()
     {
@@ -32,7 +32,7 @@ public class TOFShip : MonoBehaviour
     {
         if(cannonLeft || cannonRight)
         {
-            //cannonShotSound.Play();
+            cannonShotSound.Play();
             InstantiateCannon(cannonRight, cannonLeft, 1500);
         }
 

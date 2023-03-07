@@ -145,7 +145,7 @@ public class TOFMatchmaking : MonoBehaviour //TOFMatchmakingUI
     private static void StartToSessionScene(Message message)
     {
         
-        //todo, wtf are these variables
+        //todo, wtf are these variables XDDDDDDDDD
         int segmentsInRound = message.GetInt();
         int cannonShotLength = message.GetInt();
         

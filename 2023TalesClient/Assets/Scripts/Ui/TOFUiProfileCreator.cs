@@ -22,7 +22,7 @@ public class TOFUiProfileCreator : MonoBehaviour
         //todo: set values from player to the profile ui.
 
         GameObject playerProfile = Instantiate(playerProfileUiPrefab, transform);
-        playerProfile.GetComponent<TOFUiProfile>().SetProfileUsername(TOFClient.clients[player.playerData.Id].username);
+        playerProfile.GetComponent<TOFUiProfile>().SetProfileUsername(TOFPlayer.players[player.playerData.Id].Username);
         playerProfile.GetComponent<TOFUiProfile>().SetProfileId(player.playerData.Id);
         playerProfile.GetComponent<TOFUiProfile>().SetProfileHealth();
 

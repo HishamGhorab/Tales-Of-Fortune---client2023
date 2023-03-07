@@ -20,9 +20,10 @@ public class TOFPlayer : MonoBehaviour
     [Serializable]
     public class TOFPlayerData
     {
-        public TOFPlayerData(ushort id, Vector2Int position, int rotation, int currentHealth, int maxHealth, bool isAlive)
+        public TOFPlayerData(ushort id, string username, Vector2Int position, int rotation, int currentHealth, int maxHealth, bool isAlive)
         {
             this.id = id;
+            this.username = username;
             this.position = position;
             this.rotation = rotation;
             this.currentHealth = currentHealth;
@@ -31,6 +32,7 @@ public class TOFPlayer : MonoBehaviour
         }
         
         [SerializeField] private ushort id;
+        [SerializeField] private string username;
         
         [SerializeField] private int maxHealth;
         [SerializeField] private int currentHealth;
@@ -38,6 +40,7 @@ public class TOFPlayer : MonoBehaviour
         private bool sinking = false;
         
         public ushort Id {get => id; set { id = value; } }
+        public string Username {get => username; set { username = value; } }
         public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
         public int MaxHealth { get => maxHealth; set => maxHealth = value; }
         public bool IsAlive { get => isAlive; set => isAlive = value; }
@@ -65,7 +68,7 @@ public class TOFPlayer : MonoBehaviour
 
     public static void SpawnPlayers()
     {
-        int count = 0;
+        //int count = 0;
         foreach (TOFPlayerData playerData in players.Values)
         {
             GameObject playerGameObject = new GameObject();
@@ -73,7 +76,7 @@ public class TOFPlayer : MonoBehaviour
             
             player.playerData = playerData;
             
-            playerGameObject.name = $"Player {playerData.Id} ({TOFClient.clients[playerData.Id].username})";
+            playerGameObject.name = $"Player {playerData.Id} ({TOFPlayer.players[playerData.Id].Username})";
 
             //player.playerData.position = StartPositions[count];
             //player.playerData.rotation = StartRotations[count];
@@ -82,7 +85,7 @@ public class TOFPlayer : MonoBehaviour
             
             playerShipObjects.Add(player.playerData.Id, playerGameObject);
             
-            count++;
+            //count++;
         }
     }
 
@@ -102,13 +105,16 @@ public class TOFPlayer : MonoBehaviour
     static void AddPlayerData(Message message)
     {
         ushort id = message.GetUShort();
+        string username = message.GetString();
         Vector2 startPosition = message.GetVector2();
         int startRotation = message.GetInt();
         int currentHealth = message.GetInt();
         int maxHealth = message.GetInt();
         bool isAlive = message.GetBool();
         
-        TOFPlayerData playerData = new TOFPlayerData(id, Vector2Int.RoundToInt(startPosition) , startRotation, currentHealth, maxHealth, isAlive);
+        TOFPlayerData playerData = new TOFPlayerData(id, username,Vector2Int.RoundToInt(startPosition) , startRotation, currentHealth, maxHealth, isAlive);
+        
+        Debug.Log(id);
         
         players.Add(id, playerData);
     }
