@@ -6,9 +6,4 @@ using UnityEngine;
 public class ShopInWorld : MonoBehaviour
 {
     public string id;
-
-    private void Update()
-    {
-        Debug.Log(id);
-    }
 }
