@@ -438,6 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 991dc6f18a797fb4685949971a71564f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shopPrefab: {fileID: 1612633687071158368, guid: e3b651d1fef542948a0ae7ffc2eb68a3, type: 3}
 --- !u!1001 &208757622
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -207,6 +207,11 @@ public class TOFGameView : MonoBehaviour
     {
         return new Vector3(position.x * 10, position.y, position.z * 10);
     }
+    
+    public static Vector3 PieceToWorldPos(Vector2 position)
+    {
+        return new Vector3(position.x * 10, position.y * 10);
+    }
 
     public class MoveValues
     {
