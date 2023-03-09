@@ -89,7 +89,7 @@ public class ShopInWorld : MonoBehaviour
     [MessageHandler((ushort) ServerToClientId.sendShopState)]
     private static void AddItemsToShop(Message message)
     {
-        string shopId = message.GetString();
+        /*string shopId = message.GetString();
         if(shopId != id)
             return;
         
@@ -111,7 +111,7 @@ public class ShopInWorld : MonoBehaviour
         foreach (var VARIABLE in BuyingItems)
         {
             Debug.Log(VARIABLE.item.name);
-        }
+        }*/
     }
     
     /*private void UpdateShopUI(IShop activeShop)
