@@ -55,6 +55,8 @@ public class TOFGameView : MonoBehaviour
             v = new Vector3(v.x, v.y + 5.5f, v.z);
             TOFPlayer.playerShipObjects[player.Id].transform.position = v;
             
+            TOFPlayer.playerShipObjects[player.Id].transform.eulerAngles = new Vector3(0, player.rotation, 0);
+            
             SpawnShip(TOFPlayer.playerShipObjects[player.Id].transform);
         }
     }
