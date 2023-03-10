@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using RiptideNetworking;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShopInWorld : MonoBehaviour
@@ -14,14 +15,20 @@ public class ShopInWorld : MonoBehaviour
     //public delegate void OnExitStoreRange();
     //public static OnExitStoreRange onExitStoreRange;
 
-    public List<ItemData> BuyingItems { get; set; }
+    public static Dictionary<string, ShopInWorld> Shops = new Dictionary<string, ShopInWorld>();
+    public static Dictionary<string, List<ItemData>> ShopsBuyingItems = new Dictionary<string, List<ItemData>>();
+
+    //public List<ItemData> BuyingItems { get; set; }
     public List<int> ShopLevels { get; set; }
     public string ShopName { get; set; }
 
+    private static ShopUIController shopUIController;
+    
     protected bool canOpenShop = false;
     private void Awake()
     {
-        BuyingItems = new List<ItemData>();
+        //BuyingItems = new List<ItemData>();
+        shopUIController = GameObject.Find("ShopUI").GetComponent<ShopUIController>();
     }
 
     private void Update()
@@ -76,23 +83,21 @@ public class ShopInWorld : MonoBehaviour
         TOFNetworkManager.Singleton.Client.Send(message);
     }
     
-    public void InitializeShop()
-    {
-
-    }
-
     public void OpenMenu()
     {
         //UpdateShopUI(this);
     }
 
     [MessageHandler((ushort) ServerToClientId.sendShopState)]
-    private static void AddItemsToShop(Message message)
+    private static void InitializeShop(Message message)
     {
-        /*string shopId = message.GetString();
-        if(shopId != id)
-            return;
+        string shopId = message.GetString();
         
+        /*if(shopId != id) //????
+            return;*/
+
+        List<ItemData> items = new List<ItemData>();
+
         int buyingItemsCount = message.GetInt();
 
         for (int i = 0; i < buyingItemsCount; i++)
@@ -103,15 +108,15 @@ public class ShopInWorld : MonoBehaviour
             int itemLevel = message.GetInt();
             int baseBuyValue = message.GetInt();
 
-            Item item = new Item(id, type, name, itemLevel, baseBuyValue);
+            Sprite icon = ItemSO.itemSos[id].icon;
             
-            BuyingItems.Add(new ItemData(item, 1));
+            Item item = new Item(id, type, name, itemLevel, baseBuyValue, icon);
+            
+            items.Add(new ItemData(item, 1));
         }
-
-        foreach (var VARIABLE in BuyingItems)
-        {
-            Debug.Log(VARIABLE.item.name);
-        }*/
+        
+        ShopsBuyingItems.Add(shopId, items);
+        shopUIController.InitializeMenu(Shops[shopId], shopId);
     }
     
     /*private void UpdateShopUI(IShop activeShop)

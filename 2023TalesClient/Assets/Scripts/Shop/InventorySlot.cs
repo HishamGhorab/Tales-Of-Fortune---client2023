@@ -63,8 +63,7 @@ public class InventorySlot : VisualElement
         }
     }
     
-    /*
-    public void HoldItem(PlayerStats.FItemData item)
+    public void HoldItem(ItemData item)
     {
         itemData = item;
         icon.image = item.item.icon.texture;
@@ -86,11 +85,11 @@ public class InventorySlot : VisualElement
         {
             if (owner as ShopUIController)
                 priceText.text = itemData.item.baseBuyValue.ToString() + "€";
-            
+            /*
             if(owner as InventoryUIController)
-                priceText.text = itemData.item.baseSellValue.ToString() + "€";
+                priceText.text = itemData.item.baseSellValue.ToString() + "€";*/
         }
-    }*/
+    }
     
     public void DropItem()
     {

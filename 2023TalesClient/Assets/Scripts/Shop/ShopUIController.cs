@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class ShopUIController : UIStorageController
 {
-    /*private static ShopUIController instance;
+    private static ShopUIController instance;
     private static readonly object padlock = new object();
 
     public static ShopUIController Instance
@@ -31,11 +31,8 @@ public class ShopUIController : UIStorageController
     private Label highlightedItemText;
     
     private static InventorySlot originalSlot;
-
-    [SerializeField] private PlayerStats playerStats;
-
+    
     private UIDocument shopDocument;
-    private IShop activeShop;
 
     private void Awake()
     {
@@ -50,9 +47,9 @@ public class ShopUIController : UIStorageController
             //totalBuyText.text = CalculateTotalPrice(selectedSlots, true).ToString() + "€";
     }
 
-    public override void InitializeMenu(IShop shop)
+    public override void InitializeMenu(ShopInWorld shop, string shopId)
     {
-        base.InitializeMenu(shop);
+        base.InitializeMenu(shop, shopId);
         
         if (shopDocument.enabled == false)
         {
@@ -78,57 +75,63 @@ public class ShopUIController : UIStorageController
         shopNameText = root.Q<Label>("ShopName");
         highlightedItemText = root.Q<Label>("ShopHighlightedItemText");
             
-        ClearMenu(selectedSlots, ShopItems, slotContainer);
+        //ClearMenu(selectedSlots, ShopItems, slotContainer);
         
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < 8; i++)
         {
-            InventorySlot item = new InventorySlot();
-            item.owner = this;
-            item.isShopView = true;
-            
-            ShopItems.Add(item);
-            slotContainer.Add(item);
+            InventorySlot itemSlot = new InventorySlot
+            {
+                owner = this,
+                isShopView = true
+            };
+
+            ShopItems.Add(itemSlot);
+            slotContainer.Add(itemSlot);
         }
         
-        //OnShopChanged();
+        OnShopChanged(shopId);
 
         totalBuyText.text = "0" + "€";
-        shopNameText.text = activeShop.ShopName;
+        shopNameText.text = ShopInWorld.Shops[shopId].ShopName;
         //UpdateCurrentHighlightedSlot("", 1, 1);
 
         //buyButton?.RegisterCallback<ClickEvent>(ev => OnTradeButtonClick(activeShop, selectedSlots, playerStats, totalBuyText, true));
         //exitButton?.RegisterCallback<ClickEvent>(ev => OnExitButtonClick(selectedSlots, ShopItems, slotContainer, shopDocument));
     }
-
-    public void OnShopChanged()
+    
+    /*
+    public void SetCurrentShop(ShopInWorld activeShop)
     {
-        activeShop.BuyingItems = SortItems.Sort(activeShop.BuyingItems, InventoryUIController.Instance.sortingState, true);
+        this.activeShop = activeShop;
+        InitializeMenu(null);
+        InventoryUIController.Instance.InitializeMenu(activeShop);
+        InventoryManager.Instance.InventoryChanged();
+    }*/
+
+    
+    public void OnShopChanged(string shopId)
+    {
+        //ShopInWorld.Shops[shopId] = SortItems.Sort(activeShop.BuyingItems, InventoryUIController.Instance.sortingState, true);
         
         //Reset the ui first
         foreach (var item in ShopItems)
         {
             item.DropItem();
+            
         }
         
-        foreach (PlayerStats.FItemData item in activeShop.BuyingItems)
+        foreach (ItemData item in ShopInWorld.ShopsBuyingItems[shopId])
         {
             var emptySlot = ShopItems.FirstOrDefault(x => x.itemData == null);
-                        
+            
             if (emptySlot != null)
             {
                 emptySlot.HoldItem(item);
             }        
         }
     }
-    
-    public void SetCurrentShop(IShop activeShop)
-    {
-        this.activeShop = activeShop;
-        InitializeMenu(null);
-        InventoryUIController.Instance.InitializeMenu(activeShop);
-        InventoryManager.Instance.InventoryChanged();
-    }
-    
+
+    /*
     public override void UpdateCurrentHighlightedSlot(string name, int sliderQuantity, int itemQuantity)
     {
         base.UpdateCurrentHighlightedSlot(name, sliderQuantity, itemQuantity);

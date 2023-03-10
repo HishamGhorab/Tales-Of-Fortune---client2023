@@ -7,14 +7,14 @@ using UnityEngine.UIElements;
 
 public class UIStorageController : MonoBehaviour
 {
-    /*
     public static bool menuOpen = false;
     
-    public virtual void InitializeMenu(IShop shop)
+    public virtual void InitializeMenu(ShopInWorld shop, string shopId)
     {
         
     }
 
+    /*
     protected virtual void ClearMenu(List<InventorySlot> selectedSlots, List<InventorySlot> slotItems, VisualElement slotContainer)
     {
         selectedSlots.Clear();

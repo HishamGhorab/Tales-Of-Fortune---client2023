@@ -2,15 +2,18 @@
     <ui:Template name="Inventory" src="project://database/Assets/Scripts/Ui/ShopUI/Inventory.uxml?fileID=9197481963319205126&amp;guid=d3e4d94a39d873f4ca6c083184c480e9&amp;type=3#Inventory" />
     <Style src="project://database/Assets/Scripts/Ui/ShopUI/InventoryUSS.uss?fileID=7433441132597879392&amp;guid=4b59d4f244b9fda45a2591b0d532a974&amp;type=3#InventoryUSS" />
     <ui:VisualElement name="ShopScreen" style="flex-direction: row; align-items: center; justify-content: center; flex-grow: 1;">
-        <ui:Instance template="Inventory" name="Inventory" />
+        <ui:Instance template="Inventory" name="Inventory" style="display: none;" />
         <ui:VisualElement name="Shop">
             <ui:VisualElement name="ShopRoot" class="slotPriceText" style="visibility: visible; max-width: 625px; max-height: 810px; width: 625px; height: 810px;">
-                <ui:VisualElement name="Shop" style="flex-grow: 1; width: 100%; height: 100%; max-width: 100%; max-height: 100%; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; background-color: rgb(28, 32, 36); border-left-color: rgb(255, 197, 0); border-right-color: rgb(255, 197, 0); border-top-color: rgb(255, 197, 0); border-bottom-color: rgb(255, 197, 0); border-left-width: 5px; border-right-width: 0; border-top-width: 5px; border-bottom-width: 0;">
+                <ui:VisualElement name="Shop" style="flex-grow: 1; width: 100%; height: 100%; max-width: 100%; max-height: 100%; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; background-color: rgb(28, 32, 36); border-left-color: rgb(255, 197, 0); border-right-color: rgb(255, 197, 0); border-top-color: rgb(255, 197, 0); border-bottom-color: rgb(255, 197, 0); border-left-width: 0; border-right-width: 0; border-top-width: 5px; border-bottom-width: 0;">
                     <ui:VisualElement name="Header" class="InventoryHeaderContainer">
                         <ui:Label text="Shop" display-tooltip-when-elided="true" name="ShopName" class="HeaderText" style="-unity-text-align: upper-left;" />
                         <ui:Button text="X" display-tooltip-when-elided="true" name="ShopExitButton" class="ShopExitButton" style="font-size: 30px; background-color: rgba(188, 188, 188, 0); border-bottom-width: 5px;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="ShopSlotContainer" class="SlotContainer" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; align-items: flex-start; justify-content: space-between;" />
+                    <ui:VisualElement name="ShopSellerContainer" class="SlotContainer" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="SellerIcon" style="width: 40%; height: 85%; background-image: url(&apos;project://database/Assets/Sprites/Ui/ShopSeller.png?fileID=2800000&amp;guid=0fccf560cbcd63b49a15f2c6bd72f27f&amp;type=3#ShopSeller&apos;); margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="ShopSlotContainer" class="SlotContainer" style="flex-grow: 0; flex-direction: row; flex-wrap: wrap; align-items: flex-start; justify-content: space-between;" />
                     <ui:VisualElement name="ShopBottomContainer" class="botContainer">
                         <ui:VisualElement style="padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
                             <ui:Label text="Name of Highlighted Item" display-tooltip-when-elided="true" name="ShopHighlightedItemText" class="HighlightedItemText" />
