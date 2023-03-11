@@ -18,7 +18,8 @@ public class TOFGameView : MonoBehaviour
     public event AnimateMove onMoveRight;
     public event AnimateMove onMoveLeft;
 
-    public Dictionary<ushort, MoveValues> previousMoves = new Dictionary<ushort, MoveValues>();
+    //todo: Client updates and saves previous moves alone which is wrong, change so server sends the old moves so that it just gets the data from there instead
+    //public Dictionary<ushort, MoveValues> previousMoves = new Dictionary<ushort, MoveValues>();
 
     public static TOFGameView Singleton
     {
@@ -94,7 +95,7 @@ public class TOFGameView : MonoBehaviour
             Singleton.currentSegmentMoveData = new MoveValues(client, move, startPos, endPos, rotation, rightCannon, leftCannon);
             
             AnimateSegment(i, hitClients[i]);
-            Singleton.previousMoves[client] = Singleton.currentSegmentMoveData;
+            //Singleton.previousMoves[client] = Singleton.currentSegmentMoveData;
         }
     }
     
@@ -103,15 +104,20 @@ public class TOFGameView : MonoBehaviour
         MoveValues m = Singleton.currentSegmentMoveData;
             
         //Takes the previous move hard sets the end position and rotation in case its been offset by the editor
-        if (TOFRoundHandler.Singleton.currentSegment != 1)
+        /*if (TOFRoundHandler.Singleton.currentSegment != 1)
         {
             //check how currentSegment is getting updated
             
             ushort client = m.client;
             
+            Debug.Log("End Position: " + Singleton.previousMoves[client].endPos);
+            Debug.Log("End rot: " + Singleton.previousMoves[client].rotation);
+            
             Singleton.SetShipPos(client, Singleton.previousMoves[client].endPos);
             Singleton.SetShipRot(client, Singleton.previousMoves[client].rotation);
-        }
+        }*/
+        
+        //this should be on server!!
         
         ushort hitClient = clientHit;
 
@@ -168,11 +174,11 @@ public class TOFGameView : MonoBehaviour
         TOFUiProfile.UiProfiles[client].SetProfileHealth();
     }
 
-    public void SetShipPos(ushort client, Vector2Int pos)
+    public void SetShipPos(ushort playerId, Vector2Int pos)
     {
-        GameObject p = TOFPlayer.playerShipObjects[client];
+        GameObject p = TOFPlayer.playerShipObjects[playerId];
         Vector3 v = PieceToWorldPos(new Vector3(pos.x, p.transform.position.y, pos.y));
-        TOFPlayer.playerShipObjects[client].transform.position = v;
+        TOFPlayer.playerShipObjects[playerId].transform.position = v;
     }
 
     public void SetShipRot(ushort client, int rot)
@@ -235,5 +241,18 @@ public class TOFGameView : MonoBehaviour
         public int rotation;
         public bool rightCannon;
         public bool leftCannon;
+    }
+
+    [MessageHandler((ushort) ServerToClientId.onHardSetShipTrans)]
+    static void HardSetShipTrans(Message message)
+    {
+        for (int i = 0; i < TOFPlayer.players.Count; i++)
+        {
+            ushort playerId = message.GetUShort();
+            Vector2 playerPosition = message.GetVector2();
+            float playerRotation = message.GetFloat();
+            
+            Singleton.SetShipPos(playerId, new Vector2Int((int)playerPosition.x,(int)playerPosition.y));
+        }
     }
 }

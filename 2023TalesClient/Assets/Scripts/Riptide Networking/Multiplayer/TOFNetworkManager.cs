@@ -11,7 +11,7 @@ public enum ServerToClientId : ushort
     updateHealthValues, AddPlayerToList,
 
     //Session flow
-    sendSegmentToClient, onFetchMoves, sendRoundState, onSendMovesBackToClient,
+    sendSegmentToClient, onFetchMoves, sendRoundState, onSendMovesBackToClient, onHardSetShipTrans,
     
     //chat
     sendChatText, sendServerChatText, 
