@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5935484865805065723}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1158163626411193299}
   - component: {fileID: 1222305342893834677}
   - component: {fileID: 3825419540687756515}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 1158163626413477033}
   - component: {fileID: 1158163626412165869}
   - component: {fileID: 1158163626411104989}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Boat_Medium_01_Sails_Pirate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 1158163626413486475}
   - component: {fileID: 1158163626412182841}
   - component: {fileID: 1158163626411150411}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sail2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 1222263459838590901}
   - component: {fileID: 1222565614001082325}
   - component: {fileID: 1222200950483430105}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sail1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 9103515319709035032}
   - component: {fileID: 3649813183695950761}
   - component: {fileID: 1158163627184062082}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ship2023
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,7 +491,7 @@ Transform:
   - {fileID: 5935484865805065723}
   - {fileID: 6217011617816712195}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9103515319709035032
 MonoBehaviour:
@@ -632,7 +632,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6217011617816712195}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}

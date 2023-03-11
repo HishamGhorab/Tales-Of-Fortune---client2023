@@ -36,13 +36,11 @@ public class TOFSpawner : MonoBehaviour
         string shopName = message.GetString();
         Vector2 spawnPosition = TOFGameView.PieceToWorldPos(message.GetVector2());
         
-        Debug.Log(id);
-
-        GameObject go = Singleton.shopPrefab;
-        go.GetComponent<ShopInWorld>().id = id;
-        go.GetComponent<ShopInWorld>().ShopName = shopName;
-        ShopInWorld.Shops.Add(id, go.GetComponent<ShopInWorld>());
-        Instantiate(go, new Vector3(spawnPosition.x, 0, spawnPosition.y), quaternion.identity);
-        
+        GameObject shopPrefab = Singleton.shopPrefab;
+        GameObject shopGO = Instantiate(shopPrefab, new Vector3(spawnPosition.x, 0, spawnPosition.y), Quaternion.identity);
+        ShopInWorld shopInWorld = shopGO.AddComponent<ShopInWorld>();
+        shopInWorld.ShopName = shopName;
+        shopInWorld.id = id;
+        ShopInWorld.Shops.Add(id, shopInWorld);
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class ShopUIController : UIStorageController
 {
-    private static ShopUIController instance;
+    private static ShopUIController Singleton;
     private static readonly object padlock = new object();
 
     public static ShopUIController Instance
@@ -14,7 +14,7 @@ public class ShopUIController : UIStorageController
         {
             lock (padlock)
             {
-                return instance;
+                return Singleton;
             }
         }
     } 
@@ -36,15 +36,15 @@ public class ShopUIController : UIStorageController
 
     private void Awake()
     {
-        instance = this;
+        Singleton = this;
         shopDocument = GetComponent<UIDocument>();
         shopDocument.enabled = false;
     }
 
     private void Update()
     {
-        //if(totalBuyText != null)
-            //totalBuyText.text = CalculateTotalPrice(selectedSlots, true).ToString() + "€";
+        if(totalBuyText != null)
+            totalBuyText.text = CalculateTotalPrice(selectedSlots, true).ToString() + "€";
     }
 
     public override void InitializeMenu(ShopInWorld shop, string shopId)
@@ -75,7 +75,7 @@ public class ShopUIController : UIStorageController
         shopNameText = root.Q<Label>("ShopName");
         highlightedItemText = root.Q<Label>("ShopHighlightedItemText");
             
-        //ClearMenu(selectedSlots, ShopItems, slotContainer);
+        ClearMenu(selectedSlots, ShopItems, slotContainer);
         
         for (int i = 0; i < 8; i++)
         {
@@ -93,10 +93,10 @@ public class ShopUIController : UIStorageController
 
         totalBuyText.text = "0" + "€";
         shopNameText.text = ShopInWorld.Shops[shopId].ShopName;
-        //UpdateCurrentHighlightedSlot("", 1, 1);
+        UpdateCurrentHighlightedSlot("", 1, 1);
 
         //buyButton?.RegisterCallback<ClickEvent>(ev => OnTradeButtonClick(activeShop, selectedSlots, playerStats, totalBuyText, true));
-        //exitButton?.RegisterCallback<ClickEvent>(ev => OnExitButtonClick(selectedSlots, ShopItems, slotContainer, shopDocument));
+        exitButton?.RegisterCallback<ClickEvent>(ev => OnExitButtonClick(selectedSlots, ShopItems, slotContainer, shopDocument));
     }
     
     /*
@@ -130,8 +130,7 @@ public class ShopUIController : UIStorageController
             }        
         }
     }
-
-    /*
+    
     public override void UpdateCurrentHighlightedSlot(string name, int sliderQuantity, int itemQuantity)
     {
         base.UpdateCurrentHighlightedSlot(name, sliderQuantity, itemQuantity);
@@ -144,6 +143,6 @@ public class ShopUIController : UIStorageController
         {
             highlightedItemText.text = $"{name}";
         }
-    }*/
+    }
 }
 

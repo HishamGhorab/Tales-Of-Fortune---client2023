@@ -14,20 +14,21 @@ public class UIStorageController : MonoBehaviour
         
     }
 
-    /*
+    
     protected virtual void ClearMenu(List<InventorySlot> selectedSlots, List<InventorySlot> slotItems, VisualElement slotContainer)
     {
         selectedSlots.Clear();
         slotItems.Clear();
         slotContainer.Clear();
-        InventoryUIController.Instance.InventoryItems.Clear();
+        //InventoryUIController.Instance.InventoryItems.Clear();
     }
+    
     protected virtual void OnExitButtonClick(List<InventorySlot> selectedSlots, List<InventorySlot> slotItems, VisualElement slotContainer, UIDocument document)
     {
         ClearMenu(selectedSlots, slotItems, slotContainer);
         menuOpen = false;
         document.enabled = false;
-    }
+    }/*
     
     protected virtual void OnTradeButtonClick(IShop activeShop, List<InventorySlot> selectedSlots, PlayerStats playerStats, Label tradeText, bool shop)
     {
@@ -63,6 +64,7 @@ public class UIStorageController : MonoBehaviour
         ShopUIController.Instance.OnShopChanged();
     }
     
+*/
     public static int CalculateTotalPrice(List<InventorySlot> selectedSlots, bool shop)
     {
         //todo: can refactor ?
@@ -77,7 +79,7 @@ public class UIStorageController : MonoBehaviour
                     totalSum += selectedSlots[i].itemData.item.baseBuyValue;
                 }
             }
-        }
+        }/*
         else
         {
             for (int i = 0; i < selectedSlots.Count; i++)
@@ -87,13 +89,12 @@ public class UIStorageController : MonoBehaviour
                     totalSum += selectedSlots[i].itemData.item.baseSellValue;
                 }
             }
-        }
+        }*/
         
         return totalSum;
     }
-
     public virtual void UpdateCurrentHighlightedSlot(string name, int sliderQuantity, int itemQuantity)
     {
         
-    }*/
+    }
 }

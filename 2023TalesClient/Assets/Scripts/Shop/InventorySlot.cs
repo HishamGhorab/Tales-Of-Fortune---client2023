@@ -44,10 +44,10 @@ public class InventorySlot : VisualElement
         quantitySlider.style.visibility = Visibility.Hidden;
         quantitySlider.style.display = DisplayStyle.None;
         
-        //RegisterCallback<PointerDownEvent>(OnPointerDown);
-        //RegisterCallback<PointerOverEvent>(OnPointerOver);
-        //RegisterCallback<PointerOutEvent>(OnPointerOut);
-
+        RegisterCallback<PointerDownEvent>(OnPointerDown);
+        RegisterCallback<PointerOverEvent>(OnPointerOver);
+        RegisterCallback<PointerOutEvent>(OnPointerOut);
+        
         void AddUSSToElements()
         {
             //Add USS style properties to the elements
@@ -101,8 +101,7 @@ public class InventorySlot : VisualElement
         quantitySlider.style.visibility = Visibility.Hidden;
         quantitySlider.style.display = DisplayStyle.None;
     }
-
-    /*
+    
     private void OnPointerOver(PointerOverEvent evt)
     {
         if(itemData != null)
@@ -122,7 +121,7 @@ public class InventorySlot : VisualElement
             return;
         }
 
-        if (!isShopView)
+        /*if (!isShopView)
         {
             //Clear the image
             icon.image = null;
@@ -131,7 +130,7 @@ public class InventorySlot : VisualElement
             
             //Start the drag
             InventoryUIController.StartDrag(evt.position, this);
-        }
+        }*/
         else
         {
             if (owner as ShopUIController)
@@ -150,7 +149,7 @@ public class InventorySlot : VisualElement
                 }
             }
             
-            if (owner as InventoryUIController)
+            /*if (owner as InventoryUIController)
             {
                 InventoryUIController inventory = owner as InventoryUIController;
 
@@ -164,7 +163,7 @@ public class InventorySlot : VisualElement
                     SetSelection();
                     inventory.selectedSlots.Remove(this);
                 }
-            }
+            }*/
             
             //only show slider if more than 1 exists and selected
             if(itemData.quantity > 1 && isSelected)
@@ -179,12 +178,12 @@ public class InventorySlot : VisualElement
             }
             
             //if shop item and stackable show slider up to x value
-            if(itemData.item.stackable && isSelected && owner as ShopUIController)
+            /*if(itemData.item.stackable && isSelected && owner as ShopUIController)
             {
                 quantitySlider.highValue = 20;
                 quantitySlider.style.visibility = Visibility.Visible;
                 quantitySlider.style.display = DisplayStyle.Flex;
-            }
+            }*/
         }
     }
 
@@ -205,7 +204,7 @@ public class InventorySlot : VisualElement
     public int GetQuantitySliderValue()
     {
         return quantitySlider.value;
-    }*/
+    }
 
     #region UXML
     [Preserve]

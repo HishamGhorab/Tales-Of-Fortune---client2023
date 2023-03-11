@@ -5,6 +5,7 @@ using RiptideNetworking;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(Outline))]
 public class ShopInWorld : MonoBehaviour
 {
     public string id;
@@ -19,7 +20,7 @@ public class ShopInWorld : MonoBehaviour
     public static Dictionary<string, List<ItemData>> ShopsBuyingItems = new Dictionary<string, List<ItemData>>();
 
     //public List<ItemData> BuyingItems { get; set; }
-    public List<int> ShopLevels { get; set; }
+    //public List<int> ShopLevels { get; set; }
     public string ShopName { get; set; }
 
     private static ShopUIController shopUIController;
@@ -31,12 +32,12 @@ public class ShopInWorld : MonoBehaviour
         shopUIController = GameObject.Find("ShopUI").GetComponent<ShopUIController>();
     }
 
-    private void Update()
+    private void OnMouseDown()
     {
-        if(Input.GetKeyDown(KeyCode.S))
-            OnInteract();
+        //todo: is this rly the best way to do it? shouldn't each tile be detectable without object colliders?
+        OnInteract();
     }
-
+    
     public bool Buy(List<InventorySlot> itemsToBuy)
     {
         /*
@@ -115,7 +116,9 @@ public class ShopInWorld : MonoBehaviour
             items.Add(new ItemData(item, 1));
         }
         
-        ShopsBuyingItems.Add(shopId, items);
+        if(!ShopsBuyingItems.ContainsKey(shopId))
+            ShopsBuyingItems.Add(shopId, items);
+        
         shopUIController.InitializeMenu(Shops[shopId], shopId);
     }
     
