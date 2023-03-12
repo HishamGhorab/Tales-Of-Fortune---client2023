@@ -34,6 +34,8 @@ public class ShopUIController : UIStorageController
     
     private UIDocument shopDocument;
 
+    private string activeShopId;
+
     private void Awake()
     {
         Singleton = this;
@@ -50,6 +52,8 @@ public class ShopUIController : UIStorageController
     public override void InitializeMenu(ShopInWorld shop, string shopId)
     {
         base.InitializeMenu(shop, shopId);
+
+        activeShopId = shopId;
         
         if (shopDocument.enabled == false)
         {
@@ -95,7 +99,7 @@ public class ShopUIController : UIStorageController
         shopNameText.text = ShopInWorld.Shops[shopId].ShopName;
         UpdateCurrentHighlightedSlot("", 1, 1);
 
-        //buyButton?.RegisterCallback<ClickEvent>(ev => OnTradeButtonClick(activeShop, selectedSlots, playerStats, totalBuyText, true));
+        buyButton?.RegisterCallback<ClickEvent>(ev => OnTradeButtonClick(activeShopId, selectedSlots, totalBuyText, true));
         exitButton?.RegisterCallback<ClickEvent>(ev => OnExitButtonClick(selectedSlots, ShopItems, slotContainer, shopDocument));
     }
     
@@ -111,16 +115,18 @@ public class ShopUIController : UIStorageController
     
     public void OnShopChanged(string shopId)
     {
-        //ShopInWorld.Shops[shopId] = SortItems.Sort(activeShop.BuyingItems, InventoryUIController.Instance.sortingState, true);
+        List<ItemData> shopItemDatas = ShopInWorld.ShopsBuyingItems[shopId]; 
+        
+        //sort item locally
+        shopItemDatas = SortItems.Sort(shopItemDatas, true);
         
         //Reset the ui first
         foreach (var item in ShopItems)
         {
             item.DropItem();
-            
         }
         
-        foreach (ItemData item in ShopInWorld.ShopsBuyingItems[shopId])
+        foreach (ItemData item in shopItemDatas)
         {
             var emptySlot = ShopItems.FirstOrDefault(x => x.itemData == null);
             

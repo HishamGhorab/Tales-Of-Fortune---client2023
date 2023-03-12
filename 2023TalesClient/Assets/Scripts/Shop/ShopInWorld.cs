@@ -40,20 +40,18 @@ public class ShopInWorld : MonoBehaviour
     
     public bool Buy(List<InventorySlot> itemsToBuy)
     {
-        /*
-        foreach (var itemSlot in itemsToBuy)
+        Debug.Log("Buying request to shop: " + id);
+        
+        Message message = Message.Create(MessageSendMode.reliable, ClientToServerId.onShopBuy);
+        message.AddInt(itemsToBuy.Count);
+        
+        foreach (var item in itemsToBuy)
         {
-            //loop through amount to buy
-            for (int i = 0; i < itemSlot.GetQuantitySliderValue(); i++)
-            {
-                if(InventoryManager.Instance.AddItemToInventory(itemSlot.itemData.item))
-                {
-                    buyerStats.money -= itemSlot.itemData.item.baseBuyValue;
-                    UIHandler.Instance.changeMoneyDirtyFlag = true;
-                }
-            }
-        }*/
-
+            string itemId = item.itemData.item.id;
+            message.AddString(itemId);
+        }
+        
+        TOFNetworkManager.Singleton.Client.Send(message);
         return true;
     }
 

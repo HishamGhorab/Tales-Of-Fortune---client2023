@@ -31,7 +31,7 @@ public enum ClientToServerId : ushort
     sendChatText,
     
     //shop
-    onShopInteract
+    onShopInteract, onShopBuy,
 }
 
 

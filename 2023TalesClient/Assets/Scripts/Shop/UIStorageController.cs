@@ -28,20 +28,20 @@ public class UIStorageController : MonoBehaviour
         ClearMenu(selectedSlots, slotItems, slotContainer);
         menuOpen = false;
         document.enabled = false;
-    }/*
+    }
     
-    protected virtual void OnTradeButtonClick(IShop activeShop, List<InventorySlot> selectedSlots, PlayerStats playerStats, Label tradeText, bool shop)
+    protected virtual void OnTradeButtonClick(string shopId, List<InventorySlot> selectedSlots, Label tradeText, bool shop)
     {
         if(shop)
         {
-            if(activeShop.Buy(selectedSlots, playerStats))
+            if(ShopInWorld.Shops[shopId].Buy(selectedSlots))
                 ResetUI();
         }
-        else
+        /*else
         {
             if(activeShop.Sell(selectedSlots, playerStats))
                 ResetUI();
-        }
+        }*/
 
 
         void ResetUI()
@@ -60,11 +60,10 @@ public class UIStorageController : MonoBehaviour
     protected virtual void ClearSlots(List<InventorySlot> selectedSlots)
     {
         selectedSlots.Clear();
-        InventoryManager.Instance.InventoryChanged();
-        ShopUIController.Instance.OnShopChanged();
+        //InventoryManager.Instance.InventoryChanged();
+        //ShopUIController.Instance.OnShopChanged();
     }
     
-*/
     public static int CalculateTotalPrice(List<InventorySlot> selectedSlots, bool shop)
     {
         //todo: can refactor ?
