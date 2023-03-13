@@ -15,17 +15,20 @@ public class TOFUiProfile : MonoBehaviour
 
     [SerializeField] Image healthBar;
 
-    private ushort client;
+    private ushort clientId;
 
     private void Start()
     {
         //profileHealth.fontSize = 0;
         //profileHealth.fontSize = 36;
+
+        if (TOFClient.clients[clientId].islocal)
+            healthBar.color = Color.green;
     }
     
-    public void SetProfileId(ushort client)
+    public void SetProfileId(ushort clientId)
     {
-        this.client = client;
+        this.clientId = clientId;
     }
     
     public void SetProfileImage(Image image)
@@ -40,7 +43,7 @@ public class TOFUiProfile : MonoBehaviour
 
     public void SetProfileHealth()
     {
-        TOFPlayer.TOFPlayerData player = TOFPlayer.players[client];
+        TOFPlayer.TOFPlayerData player = TOFPlayer.players[clientId];
         profileHealth.text = player.CurrentHealth.ToString();
         AnimateHealthBar(player.CurrentHealth, player.MaxHealth);
     }
