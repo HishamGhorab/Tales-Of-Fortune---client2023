@@ -20,7 +20,7 @@ public class TOFUiProfile : MonoBehaviour
     private void Start()
     {
         //profileHealth.fontSize = 0;
-        profileHealth.fontSize = 36;
+        //profileHealth.fontSize = 36;
     }
     
     public void SetProfileId(ushort client)
