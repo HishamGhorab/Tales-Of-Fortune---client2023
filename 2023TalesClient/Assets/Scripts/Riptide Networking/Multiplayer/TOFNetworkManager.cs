@@ -17,7 +17,10 @@ public enum ServerToClientId : ushort
     sendChatText, sendServerChatText, 
     
     //shop
-    spawnShop, sendShopState
+    spawnShop, sendShopState,
+    
+    //inventory
+    sendInventoryState,
 }
 
 public enum ClientToServerId : ushort

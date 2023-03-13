@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Scripting;
 using UnityEngine.UIElements;
 
-public class InventorySlot : VisualElement
+public class ShopSlot : VisualElement
 {
     public UIStorageController owner;
     
@@ -18,7 +18,7 @@ public class InventorySlot : VisualElement
 
     private bool isSelected = false;
     
-    public InventorySlot()
+    public ShopSlot()
     {
         itemData = null;
 
@@ -208,7 +208,7 @@ public class InventorySlot : VisualElement
 
     #region UXML
     [Preserve]
-    public new class UxmlFactory : UxmlFactory<InventorySlot, UxmlTraits> { }
+    public new class UxmlFactory : UxmlFactory<ShopSlot, UxmlTraits> { }
     [Preserve]
     public new class UxmlTraits : VisualElement.UxmlTraits { }
     #endregion

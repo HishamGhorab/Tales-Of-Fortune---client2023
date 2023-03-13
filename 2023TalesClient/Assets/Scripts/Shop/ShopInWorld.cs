@@ -38,7 +38,7 @@ public class ShopInWorld : MonoBehaviour
         OnInteract();
     }
     
-    public bool Buy(List<InventorySlot> itemsToBuy)
+    public bool Buy(List<ShopSlot> itemsToBuy)
     {
         Debug.Log("Buying request to shop: " + id);
         

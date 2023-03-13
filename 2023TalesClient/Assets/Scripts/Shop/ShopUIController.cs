@@ -19,8 +19,8 @@ public class ShopUIController : UIStorageController
         }
     } 
 
-    public List<InventorySlot> selectedSlots = new List<InventorySlot>();
-    public List<InventorySlot> ShopItems = new List<InventorySlot>();
+    public List<ShopSlot> selectedSlots = new List<ShopSlot>();
+    public List<ShopSlot> ShopItems = new List<ShopSlot>();
     
     private VisualElement root;
     private VisualElement slotContainer;
@@ -30,7 +30,7 @@ public class ShopUIController : UIStorageController
     private Label shopNameText;
     private Label highlightedItemText;
     
-    private static InventorySlot originalSlot;
+    private static ShopSlot originalSlot;
     
     private UIDocument shopDocument;
 
@@ -83,7 +83,7 @@ public class ShopUIController : UIStorageController
         
         for (int i = 0; i < 8; i++)
         {
-            InventorySlot itemSlot = new InventorySlot
+            ShopSlot itemSlot = new ShopSlot
             {
                 owner = this,
                 isShopView = true

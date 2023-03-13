@@ -15,7 +15,7 @@ public class UIStorageController : MonoBehaviour
     }
 
     
-    protected virtual void ClearMenu(List<InventorySlot> selectedSlots, List<InventorySlot> slotItems, VisualElement slotContainer)
+    protected virtual void ClearMenu(List<ShopSlot> selectedSlots, List<ShopSlot> slotItems, VisualElement slotContainer)
     {
         selectedSlots.Clear();
         slotItems.Clear();
@@ -23,14 +23,14 @@ public class UIStorageController : MonoBehaviour
         //InventoryUIController.Instance.InventoryItems.Clear();
     }
     
-    protected virtual void OnExitButtonClick(List<InventorySlot> selectedSlots, List<InventorySlot> slotItems, VisualElement slotContainer, UIDocument document)
+    protected virtual void OnExitButtonClick(List<ShopSlot> selectedSlots, List<ShopSlot> slotItems, VisualElement slotContainer, UIDocument document)
     {
         ClearMenu(selectedSlots, slotItems, slotContainer);
         menuOpen = false;
         document.enabled = false;
     }
     
-    protected virtual void OnTradeButtonClick(string shopId, List<InventorySlot> selectedSlots, Label tradeText, bool shop)
+    protected virtual void OnTradeButtonClick(string shopId, List<ShopSlot> selectedSlots, Label tradeText, bool shop)
     {
         if(shop)
         {
@@ -57,14 +57,14 @@ public class UIStorageController : MonoBehaviour
         }
     }
     
-    protected virtual void ClearSlots(List<InventorySlot> selectedSlots)
+    protected virtual void ClearSlots(List<ShopSlot> selectedSlots)
     {
         selectedSlots.Clear();
         //InventoryManager.Instance.InventoryChanged();
         //ShopUIController.Instance.OnShopChanged();
     }
     
-    public static int CalculateTotalPrice(List<InventorySlot> selectedSlots, bool shop)
+    public static int CalculateTotalPrice(List<ShopSlot> selectedSlots, bool shop)
     {
         //todo: can refactor ?
         int totalSum = 0;
