@@ -729,9 +729,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allItemSOs:
+  - {fileID: 11400000, guid: 935b43b79b90a0245941af3335080ab1, type: 2}
+  - {fileID: 11400000, guid: fe7cfee5f9c76e14fa15d08f0b0f6c25, type: 2}
+  - {fileID: 11400000, guid: 65ed82a3f7c12194bb461165185b414b, type: 2}
+  - {fileID: 11400000, guid: b811420378bb28a4f9a23740c4aa10c3, type: 2}
+  - {fileID: 11400000, guid: 6729dd2e44da68c448a0be7329d1f70a, type: 2}
+  - {fileID: 11400000, guid: b0c5d8f38c3196141998453e7ec54e13, type: 2}
+  - {fileID: 11400000, guid: 2cdd2608a5625fb419618f89f65dfc7b, type: 2}
   - {fileID: 11400000, guid: 96877c3f5b26f2c40a52e059dea19469, type: 2}
   - {fileID: 11400000, guid: 8ec1d1811df3329429e9fb1e79dcb6f1, type: 2}
+  - {fileID: 11400000, guid: e3f9a3f5a86d722428631f87f9127e22, type: 2}
+  - {fileID: 11400000, guid: 6a21f79dbf859f64a91151669264a23d, type: 2}
   - {fileID: 11400000, guid: 4d35c6443f221464ea971c2c53c78b27, type: 2}
+  - {fileID: 11400000, guid: ac266250fe0d3ed418a118f739e17478, type: 2}
 --- !u!1 &433278919
 GameObject:
   m_ObjectHideFlags: 0

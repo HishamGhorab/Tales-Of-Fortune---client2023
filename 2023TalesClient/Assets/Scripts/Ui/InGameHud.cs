@@ -105,7 +105,7 @@ public class InGameHud : MonoBehaviour
     {
         VisualElement inventory = root.Q<VisualElement>("InventoryContainer");
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 6; i++)
         {
             InventorySlot slot = new InventorySlot();
             inventorySlots.Add(slot);

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17331dc3bf35b9948809fdd04a4e3d76, type: 3}
-  m_Name: Food
+  m_Name: Health Potion
   m_EditorClassIdentifier: 
-  id: 920E7B96-E8EC-453D-82B8-2A1DAD38077F
-  icon: {fileID: 21300000, guid: 4a39cb4b272639541b7bd5ac0649acf7, type: 3}
+  id: 801F3E08-6820-42BD-82A2-16B0A79FA24C
+  icon: {fileID: 21300000, guid: e52ea25af699fd445b7046374f81a5b9, type: 3}
