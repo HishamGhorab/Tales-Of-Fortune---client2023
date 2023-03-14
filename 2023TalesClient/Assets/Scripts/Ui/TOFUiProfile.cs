@@ -15,20 +15,21 @@ public class TOFUiProfile : MonoBehaviour
 
     [SerializeField] Image healthBar;
 
-    private ushort clientId;
+    private ushort playerId;
 
     private void Start()
     {
         //profileHealth.fontSize = 0;
         //profileHealth.fontSize = 36;
 
-        if (TOFClient.clients[clientId].islocal)
+        if (TOFPlayer.players[playerId].Human && TOFClient.clients[playerId].islocal)
             healthBar.color = Color.green;
+
     }
     
-    public void SetProfileId(ushort clientId)
+    public void SetProfileId(ushort playerId)
     {
-        this.clientId = clientId;
+        this.playerId = playerId;
     }
     
     public void SetProfileImage(Image image)
@@ -43,15 +44,15 @@ public class TOFUiProfile : MonoBehaviour
 
     public void SetProfileHealth()
     {
-        TOFPlayer.TOFPlayerData player = TOFPlayer.players[clientId];
+        TOFPlayer.TOFPlayerData player = TOFPlayer.players[playerId];
         profileHealth.text = player.CurrentHealth.ToString();
         AnimateHealthBar(player.CurrentHealth, player.MaxHealth);
     }
 
     public void AnimateHealthBar(int currentHealth, int maxHealth)
     {
-        healthBar.fillAmount = LeanTween.easeInOutSine(healthBar.fillAmount, (float)currentHealth / (float)maxHealth, 0.2f);
-        //healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
+        //healthBar.fillAmount = LeanTween.easeInOutSine(healthBar.fillAmount, (float)currentHealth / (float)maxHealth, 0.2f);
+        healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
     }
 
     public void OnClicked()

@@ -20,10 +20,12 @@ public class TOFPlayer : MonoBehaviour
     [Serializable]
     public class TOFPlayerData
     {
-        public TOFPlayerData(ushort id, string username, Vector2Int position, int rotation, int currentHealth, int maxHealth, bool isAlive)
+        public TOFPlayerData(ushort id, string username, bool human, Vector2Int position, int rotation, int currentHealth, int maxHealth, bool isAlive)
         {
             this.id = id;
             this.username = username;
+            this.human = human;
+            
             this.position = position;
             this.rotation = rotation;
             this.currentHealth = currentHealth;
@@ -33,6 +35,7 @@ public class TOFPlayer : MonoBehaviour
         
         [SerializeField] private ushort id;
         [SerializeField] private string username;
+        private bool human;
         
         [SerializeField] private int maxHealth;
         [SerializeField] private int currentHealth;
@@ -41,6 +44,8 @@ public class TOFPlayer : MonoBehaviour
         
         public ushort Id {get => id; set { id = value; } }
         public string Username {get => username; set { username = value; } }
+
+        public bool Human { get => human; }
         public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
         public int MaxHealth { get => maxHealth; set => maxHealth = value; }
         public bool IsAlive { get => isAlive; set => isAlive = value; }
@@ -106,13 +111,14 @@ public class TOFPlayer : MonoBehaviour
     {
         ushort id = message.GetUShort();
         string username = message.GetString();
+        bool human = message.GetBool();
         Vector2 startPosition = message.GetVector2();
         int startRotation = message.GetInt();
         int currentHealth = message.GetInt();
         int maxHealth = message.GetInt();
         bool isAlive = message.GetBool();
         
-        TOFPlayerData playerData = new TOFPlayerData(id, username,Vector2Int.RoundToInt(startPosition) , startRotation, currentHealth, maxHealth, isAlive);
+        TOFPlayerData playerData = new TOFPlayerData(id, username, human, Vector2Int.RoundToInt(startPosition) , startRotation, currentHealth, maxHealth, isAlive);
         
         Debug.Log(id);
         

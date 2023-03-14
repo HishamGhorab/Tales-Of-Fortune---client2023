@@ -104,7 +104,10 @@ public class TOFGameView : MonoBehaviour
         {
             Singleton.AnimateShip(m.client, m.move, m.endPos, m.rotation);
             yield return new WaitForSeconds(TOFTimeHandler.Singleton.MoveTime);
+            Debug.Log("MoveTime " + TOFTimeHandler.Singleton.MoveTime);
             
+            
+            //Do this in the server pls
             bool didHitClientHit;
             didHitClientHit = hitClient != ushort.MaxValue ? true : false;
             if(didHitClientHit)
