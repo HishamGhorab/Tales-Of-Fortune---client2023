@@ -26,6 +26,8 @@ public class InGameHud : MonoBehaviour
     
     public List<InventorySlot> inventorySlots = new List<InventorySlot>();
 
+    private int money = 0;
+    
     private int roundLength = 10;
     private float timeLeftForRound = 0;
     private bool planningPhase = false;
@@ -36,6 +38,9 @@ public class InGameHud : MonoBehaviour
     private VisualElement roundProgressBar;
     private Label roundLengthText;
     private Label roundSegmentText;
+    
+    private Label moneyText;
+    private bool updateMoneyText;
 
     private void Awake()
     {
@@ -51,6 +56,9 @@ public class InGameHud : MonoBehaviour
         
         roundLengthText.text = roundLength.ToString();
         roundSegmentText.text = "1:0";
+        
+        moneyText = root.Q<Label>("MoneyText");
+        moneyText.text = "0€";
         
         InitInventory();
     }
@@ -72,7 +80,6 @@ public class InGameHud : MonoBehaviour
         //needs fix
         if (playingPhase)
         {
-            Debug.Log("w");
             roundSegmentText.text = string.Format("{0}:{1}", TOFRoundHandler.currentRound, TOFRoundHandler.Singleton.currentSegment);
         }
         
@@ -84,6 +91,12 @@ public class InGameHud : MonoBehaviour
             
             roundLengthText.text = (math.round(timeLeftForRound)).ToString();
             roundProgressBar.style.width = Length.Percent((timeLeftForRound / roundLength) * 100);
+        }
+
+        if (updateMoneyText)
+        {
+            moneyText.text = money + "€";
+            updateMoneyText = false;
         }
     }
 
@@ -150,5 +163,12 @@ public class InGameHud : MonoBehaviour
                 emptySlot.HoldItem(item);
             }        
         }
+    }
+    
+    [MessageHandler((ushort) ServerToClientId.sendMoneyState)]
+    private static void OnMoneyChange(Message message)
+    {
+        Singleton.money = message.GetInt();
+        Singleton.updateMoneyText = true;
     }
 }

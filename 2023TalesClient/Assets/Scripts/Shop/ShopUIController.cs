@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using RiptideNetworking;
 using UnityEngine.UIElements;
 
 public class ShopUIController : UIStorageController
@@ -101,6 +103,13 @@ public class ShopUIController : UIStorageController
 
         buyButton?.RegisterCallback<ClickEvent>(ev => OnTradeButtonClick(activeShopId, selectedSlots, totalBuyText, true));
         exitButton?.RegisterCallback<ClickEvent>(ev => OnExitButtonClick(selectedSlots, ShopItems, slotContainer, shopDocument));
+    }
+
+    [MessageHandler((ushort) ServerToClientId.closeShop)]
+    private static void CloseShopMenu(Message message)
+    {
+        menuOpen = false;
+        Singleton.shopDocument.enabled = false;
     }
     
     /*

@@ -20,8 +20,12 @@
                 <ui:VisualElement name="RoundProgressBar" style="height: 100%; background-color: rgb(255, 197, 0); width: 60%;" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement style="height: 10%; align-items: center;">
-            <ui:VisualElement name="InventoryContainer" style="background-color: rgb(28, 32, 36); height: 100%; width: 33%; justify-content: center; border-left-width: 0; border-right-width: 0; border-top-width: 2px; border-bottom-width: 0; border-left-color: rgb(255, 197, 0); border-right-color: rgb(255, 197, 0); border-top-color: rgb(255, 197, 0); border-bottom-color: rgb(255, 197, 0); flex-direction: row; align-items: center; padding-right: 5px;" />
+        <ui:VisualElement style="height: 10%; align-items: center; flex-direction: row; justify-content: space-between;">
+            <ui:VisualElement style="flex-grow: 1; width: 100%; height: 100%;" />
+            <ui:VisualElement name="InventoryContainer" style="background-color: rgb(28, 32, 36); height: 100%; width: 33%; justify-content: center; border-left-width: 0; border-right-width: 0; border-top-width: 2px; border-bottom-width: 0; border-left-color: rgb(255, 197, 0); border-right-color: rgb(255, 197, 0); border-top-color: rgb(255, 197, 0); border-bottom-color: rgb(255, 197, 0); flex-direction: row; align-items: center; padding-right: 5px; min-width: 33%;" />
+            <ui:VisualElement style="justify-content: flex-end; height: 100%; flex-grow: 1; align-items: stretch; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; width: 100%;">
+                <ui:Label tabindex="-1" text="2000" display-tooltip-when-elided="true" name="MoneyText" class="RoundText" style="color: rgb(255, 197, 0); width: 100%; -unity-text-align: upper-right;" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
